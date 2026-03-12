@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Benchmarks/Benchmarks.csproj" Id="98afee26-4ced-4a76-b9c6-6eddcd8b9372" />
   <Project Path="DataAccess/DataAccess.csproj" />
   <Project Path="FastendpointApiDemo/FastendpointApiDemo.csproj" />
   <Project Path="FastEndpointDemo/WebAPI.csproj" />
