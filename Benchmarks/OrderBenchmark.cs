@@ -7,8 +7,8 @@ public class ApiBenchmark
 {
     private static readonly HttpClient httpClient = new HttpClient();
 
-    private const string FastEndpointUrl = "http://localhost:5244/orders?page=1&pageSize=100";
-    private const string WebApiUrl = "http://localhost:5267/api/orders?pageSize=100";
+    private const string FastEndpointUrl = "https://localhost:44304/orders?page=1&pageSize=10000";
+    private const string WebApiUrl = "https://localhost:44378/api/orders?pageSize=10000";
 
     private const int Iterations = 50;
 
