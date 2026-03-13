@@ -2,6 +2,7 @@ using DataAccess.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Filters;
 using WebAPI.Interfaces;
+using WebAPI.Repositories;
 using WebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<TimingLoggingFilter>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(

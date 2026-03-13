@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 namespace Benchmarks;
 public class ApiBenchmark
 {
+
     private static readonly HttpClient httpClient = new HttpClient();
 
     private const string FastEndpointUrl = "https://localhost:44304/orders?page=1&pageSize=10000";

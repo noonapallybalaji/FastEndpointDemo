@@ -18,7 +18,6 @@ public class GetOrderEndpoint(AppDbContext context)
         Get("/orders");
         PreProcessor<TimingPreProcessor<GetOrdersRequest>>();
         PostProcessor<TimingPostProcessor<GetOrdersRequest, List<DataAccess.Models.Order>>>();
-
         AllowAnonymous();
     }
 
