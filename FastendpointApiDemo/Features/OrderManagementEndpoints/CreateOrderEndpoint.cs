@@ -1,24 +1,22 @@
 ﻿using DataAccess.DataBaseContext;
-using DataAccess.Models;
-using FastendpointApiDemo.Infrastructure;
 using FastEndpoints;
 
 namespace FastendpointApiDemo.Features.OrderManagementEndpoints
 {
-    public class CreateOrderEndpoint(AppDbContext context) 
-        : Endpoint<CreateOrderEndpoint.CreateOrderRequest, CreateOrderEndpoint.CreateOrderResponse>
+    public class CreateOrderRequest
     {
-        public class CreateOrderRequest
-        {
-            public int ProductId { get; set; }
-            public int Quantity { get; set; }
-        }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+    }
 
-        public class CreateOrderResponse
-        {
-            public string? Message { get; set; }
-        }
+    public class CreateOrderResponse
+    {
+        public string? Message { get; set; }
+    }
 
+    public class CreateOrderEndpoint(AppDbContext context) 
+        : Endpoint<CreateOrderRequest, CreateOrderResponse>
+    {
         public override void Configure()
         {
             Post("/orders");
