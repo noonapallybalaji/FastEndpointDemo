@@ -1,4 +1,3 @@
-﻿using BenchmarkDotNet.Running;
-using Benchmarks;
+﻿using Orders.Benchmarks;
 
 await ApiBenchmark.RunAsync();

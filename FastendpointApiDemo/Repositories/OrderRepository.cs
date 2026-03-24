@@ -1,9 +1,8 @@
 ﻿using Orders.Data.DataBaseContext;
 using Orders.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Orders.Web.Interfaces;
-
-namespace Orders.Web.Repositories;
+using Orders.Fastendpoints.Interfaces;
+namespace Orders.Fastendpoints.Repositories;
 
 /// <summary>
 /// Repository responsible for handling database operations related to Orders.

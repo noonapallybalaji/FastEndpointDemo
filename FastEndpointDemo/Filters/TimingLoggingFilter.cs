@@ -1,11 +1,11 @@
-﻿namespace WebAPI.Filters;
-
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.Filters;
-using WebAPI.RequestModels.OrderRequestModels;
+using Orders.Web.RequestModels.OrderRequestModels;
+
+namespace Orders.Web.Filters;
 
 public class TimingLoggingFilter(ILogger<TimingLoggingFilter> logger) : IActionFilter
 {

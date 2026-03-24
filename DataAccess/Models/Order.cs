@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataAccess.Models
+﻿namespace Orders.Data.Models
 {
     public class Order
     {

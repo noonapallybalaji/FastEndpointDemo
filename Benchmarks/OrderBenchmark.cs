@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Threading.Tasks;
-namespace Benchmarks;
+﻿using System.Diagnostics;
+
+namespace Orders.Benchmarks;
 public class ApiBenchmark
 {
 
@@ -86,7 +84,7 @@ public class ApiBenchmark
         Console.WriteLine($"Max: {fastMax:F2} ms");
         Console.WriteLine();
 
-        Console.WriteLine("Web API");
+        Console.WriteLine("Fastendpoints API");
         Console.WriteLine($"Average: {webAvg:F2} ms");
         Console.WriteLine($"Min: {webMin:F2} ms");
         Console.WriteLine($"Max: {webMax:F2} ms");
@@ -101,7 +99,7 @@ public class ApiBenchmark
         }
         else
         {
-            Console.WriteLine("Web API is faster.");
+            Console.WriteLine("Fastendpoints API is faster.");
         }
     }
 }

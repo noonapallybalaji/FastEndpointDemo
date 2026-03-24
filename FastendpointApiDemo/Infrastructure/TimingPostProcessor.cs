@@ -1,7 +1,7 @@
-﻿namespace FastendpointApiDemo.Infrastructure;
-
-using FastendpointApiDemo.State;
+﻿using Orders.Fastendpoints.State;
 using FastEndpoints;
+
+namespace Orders.Fastendpoints.Infrastructure;
 
 public class TimingPostProcessor<TRequest, TResponse>(
     ILogger<TimingPostProcessor<TRequest, TResponse>> logger)

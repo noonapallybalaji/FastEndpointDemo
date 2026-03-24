@@ -1,6 +1,6 @@
 ﻿using Orders.Data.Models;
 
-namespace Orders.Web.Interfaces;
+namespace Orders.Fastendpoints.Interfaces;
 
 public interface IOrderRepository
 {

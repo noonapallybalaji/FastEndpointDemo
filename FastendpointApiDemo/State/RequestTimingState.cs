@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace FastendpointApiDemo.State;
+namespace Orders.Fastendpoints.State;
 
 public class RequestTimingState
 {

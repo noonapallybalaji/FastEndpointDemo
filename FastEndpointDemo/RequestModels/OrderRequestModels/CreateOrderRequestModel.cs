@@ -1,4 +1,4 @@
-﻿namespace WebAPI.RequestModels.OrderRequestModels;
+﻿namespace Orders.Web.RequestModels.OrderRequestModels;
 
 public class CreateOrderRequestModel
 {

@@ -1,7 +1,7 @@
-﻿using DataAccess.Models;
-using WebAPI.RequestModels.OrderRequestModels;
+﻿using Orders.Data.Models;
+using Orders.Web.RequestModels.OrderRequestModels;
 
-namespace WebAPI.Interfaces;
+namespace Orders.Web.Interfaces;
 
 public interface IOrderService
 {

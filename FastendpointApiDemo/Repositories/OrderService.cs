@@ -1,9 +1,8 @@
-﻿
-using Orders.Data.Models;
-using Orders.Web.Interfaces;
-using Orders.Web.RequestModels.OrderRequestModels;
+﻿using Orders.Data.Models;
+using Orders.Fastendpoints.Features.OrderManagement;
+using Orders.Fastendpoints.Interfaces;
 
-namespace Orders.Web.Services;
+namespace Orders.Fastendpoints.Services;
 
 /// <summary>
 /// Service layer responsible for business logic related to Orders.
@@ -26,7 +25,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
     /// </summary>
     /// <param name="request">Request model containing order details.</param>
     /// <returns>The created order.</returns>
-    public async Task<Order> CreateOrder(CreateOrderRequestModel request)
+    public async Task<Order> CreateOrder(CreateOrderRequest request)
     {
         var order = new Order
         {
@@ -44,7 +43,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
     /// <param name="id">Order identifier.</param>
     /// <param name="request">Update request.</param>
     /// <returns>Updated order or null if not found.</returns>
-    public async Task<Order?> UpdateOrder(int id, UpdateOrderRequestModel request)
+    public async Task<Order?> UpdateOrder(int id, UpdateOrderRequest request)
     {
         var order = await orderRepository.GetById(id);
 

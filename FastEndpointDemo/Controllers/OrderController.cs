@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebAPI.Filters;
-using WebAPI.Interfaces;
-using WebAPI.RequestModels.OrderRequestModels;
+using Orders.ExternalServices.Interfaces;
+using Orders.Web.Filters;
+using Orders.Web.Interfaces;
+using Orders.Web.RequestModels.OrderRequestModels;
 
-namespace WebAPI.Controllers;
+namespace Orders.Web.Controllers;
 
 /// <summary>
 /// Controller responsible for managing Order resources.
@@ -13,7 +14,7 @@ namespace WebAPI.Controllers;
 [ApiController]
 [Route("api/orders")]
 [ServiceFilter(typeof(TimingLoggingFilter))]
-public class OrdersController(IOrderService orderService) : ControllerBase
+public class OrdersController(IOrderService orderService, IEmailService emailService, ICacheService cacheService, IAuditService auditService) : ControllerBase
 {
     /// <summary>
     /// Retrieves a paginated list of orders.
@@ -21,7 +22,7 @@ public class OrdersController(IOrderService orderService) : ControllerBase
     /// <param name="request">Pagination request containing page and page size.</param>
     /// <returns>A list of orders.</returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<DataAccess.Models.Order>>> GetOrders([FromQuery] GetOrderRequestModel request)
+    public async Task<ActionResult<IEnumerable<Data.Models.Order>>> GetOrders([FromQuery] GetOrderRequestModel request)
     {
         if (request.PageSize <= 0 || request.PageSize > 10000)
         {
@@ -39,7 +40,7 @@ public class OrdersController(IOrderService orderService) : ControllerBase
     /// <param name="request">Order creation request.</param>
     /// <returns>The created order.</returns>
     [HttpPost]
-    public async Task<ActionResult<DataAccess.Models.Order>> CreateOrder([FromBody] CreateOrderRequestModel request)
+    public async Task<ActionResult<Data.Models.Order>> CreateOrder([FromBody] CreateOrderRequestModel request)
     {
         if (request.Quantity <= 0)
         {
@@ -47,6 +48,9 @@ public class OrdersController(IOrderService orderService) : ControllerBase
         }
 
         var createdOrder = await orderService.CreateOrder(request);
+
+        cacheService.CreateCache(createdOrder);
+        emailService.Send();
 
         return CreatedAtAction(nameof(GetOrders), new { id = createdOrder.Id }, createdOrder);
     }
@@ -58,14 +62,16 @@ public class OrdersController(IOrderService orderService) : ControllerBase
     /// <param name="request">Update request.</param>
     /// <returns>Updated order.</returns>
     [HttpPatch("{id}")]
-    public async Task<ActionResult<DataAccess.Models.Order>> UpdateOrder(int id, [FromBody] UpdateOrderRequestModel request)
+    public async Task<ActionResult<Data.Models.Order>> UpdateOrder(int id, [FromBody] UpdateOrderRequestModel request)
     {
-        var updatedOrder = await orderService.UpdateOrder(id, request);
+        Data.Models.Order? updatedOrder = await orderService.UpdateOrder(id, request);
 
         if (updatedOrder == null)
         {
             return NotFound($"Order with Id {id} not found.");
         }
+
+        auditService.Log("Order Updated!");
 
         return Ok(updatedOrder);
     }
