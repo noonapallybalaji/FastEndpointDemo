@@ -1,8 +1,8 @@
-﻿namespace FastendpointApiDemo.Infrastructure;
-
-using System.Diagnostics;
-using FastendpointApiDemo.State;
+﻿using System.Diagnostics;
+using Orders.Fastendpoints.State;
 using FastEndpoints;
+
+namespace Orders.Fastendpoints.Infrastructure;
 
 public class TimingPreProcessor<TRequest>(
     ILogger<TimingPreProcessor<TRequest>> logger)

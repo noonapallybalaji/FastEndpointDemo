@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="DataAccess/DataAccess.csproj" />
-  <Project Path="FastendpointApiDemo/FastendpointApiDemo.csproj" />
-  <Project Path="FastEndpointDemo/WebAPI.csproj" />
-</Solution>

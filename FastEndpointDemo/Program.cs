@@ -1,8 +1,11 @@
-using DataAccess.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
-using WebAPI.Filters;
-using WebAPI.Interfaces;
-using WebAPI.Services;
+using Orders.Data.DataBaseContext;
+using Orders.ExternalServices.Interfaces;
+using Orders.ExternalServices.Services;
+using Orders.Web.Filters;
+using Orders.Web.Interfaces;
+using Orders.Web.Repositories;
+using Orders.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<TimingLoggingFilter>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddScoped<IAuditService, AuditService>();
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
@@ -33,3 +41,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

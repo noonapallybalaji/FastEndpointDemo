@@ -1,7 +1,7 @@
-﻿using DataAccess.Models;
+﻿using Orders.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.DataBaseContext
+namespace Orders.Data.DataBaseContext
 {
     public class AppDbContext : DbContext
     {

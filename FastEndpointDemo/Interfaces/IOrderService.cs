@@ -1,12 +1,15 @@
-﻿using DataAccess.Models;
+﻿using Orders.Data.Models;
+using Orders.Web.RequestModels.OrderRequestModels;
 
-namespace WebAPI.Interfaces
+namespace Orders.Web.Interfaces;
+
+public interface IOrderService
 {
-    public interface IOrderService
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        Task<List<Order>> GetOrder(int PageSize);
-    }
+    Task<List<Order>> GetOrders(int pageSize);
+
+    Task<Order> CreateOrder(CreateOrderRequestModel request);
+
+    Task<Order?> UpdateOrder(int id, UpdateOrderRequestModel request);
+
+    Task<bool> DeleteOrder(int id);
 }
